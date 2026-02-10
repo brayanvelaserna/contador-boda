@@ -7,65 +7,104 @@
 <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=DM+Serif+Display&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
 body{
+  margin:0;
   background:transparent;
-  font-family:'DM Serif Display', serif;
   text-align:center;
-  padding:40px 20px;
+  font-family:'DM Serif Display', serif;
 }
 
 .subtitle{
-  font-size:26px;
+  font-size:28px;
   color:#7a8b6f;
-  margin-bottom:10px;
+  margin-top:40px;
 }
 
 .title{
   font-family:'Alex Brush', cursive;
   font-size:60px;
   color:#7a8b6f;
-  margin-bottom:35px;
+  margin-bottom:40px;
 }
 
 .count-container{
   display:flex;
   justify-content:center;
-  gap:60px;
+  gap:50px;
   flex-wrap:wrap;
+}
+
+.number{
+  font-size:90px;
+  color:#b79b3f;
+}
+
+.label{
+  font-family:'Alex Brush', cursive;
+  font-size:28px;
+  color:#7a8b6f;
+  margin-top:-20px;
 }
 
 .block{
   text-align:center;
 }
 
-.number{
-  font-size:90px;
-  color:#b79b3f;
-  line-height:1;
-}
-
-.label{
-  font-family:'Alex Brush', cursive;
-  font-size:26px;
-  color:#7a8b6f;
-  margin-top:-10px;
-}
-
-@media(max-width:768px){
+@media(max-width:600px){
+  .number{
+    font-size:45px;
+  }
   .title{
     font-size:40px;
   }
-  .number{
-    font-size:48px;
-  }
-  .label{
-    font-size:20px;
-  }
-  .count-container{
-    gap:25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="subtitle">Contando los días</div>
+<div class="title">Para nuestro “Sí”</div>
+
+<div class="count-container">
+  <div class="block">
+    <div id="days" class="number">00</div>
+    <div class="label">Días</div>
+  </div>
+  <div class="block">
+    <div id="hours" class="number">00</div>
+    <div class="label">Horas</div>
+  </div>
+  <div class="block">
+    <div id="minutes" class="number">00</div>
+    <div class="label">Minutos</div>
+  </div>
+  <div class="block">
+    <div id="seconds" class="number">00</div>
+    <div class="label">Segundos</div>
+  </div>
+</div>
+
+<script>
+var countDownDate = new Date("May 23, 2026 16:00:00").getTime();
+
+setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
+
+}, 1000);
+</script>
+
+</body>
+</html>
+
