@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+<style>
+html, body{
+    margin:0;
+    padding:0;
+    background:transparent;
+    text-align:center;
+    font-family:'DM Serif Display', serif;
+    color:#7a8b6f;
+}
+
+.container{
+    padding:30px 15px;
+}
+
+/* MES */
+.month{
+    font-size:40px;
+    letter-spacing:4px;
+    margin-bottom:10px;
+}
+
+/* DIAS SEMANA */
+.weekdays{
+    display:grid;
+    grid-template-columns: repeat(7,1fr);
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.line{
+    height:2px;
+    background:#b59a2f;
+    margin:10px 0 20px 0;
+}
+
+/* CALENDARIO */
+.calendar{
+    display:grid;
+    grid-template-columns: repeat(7,1fr);
+    gap:12px;
+    font-size:18px;
+}
+
+.day{
+    position:relative;
+}
+
+.highlight{
+    position:relative;
+    font-weight:bold;
+}
+
+/* CORAZÓN */
+.heart{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) scale(1);
+    width:60px;
+    height:60px;
+    pointer-events:none;
+}
+
+/* Animación dibujo */
+.heart path{
+    fill:none;
+    stroke:#b59a2f;
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+
+    stroke-dasharray:300;
+    stroke-dashoffset:300;
+
+    animation: draw 3s ease forwards,
+               heartbeat 1.2s ease-in-out 3s infinite,
+               restart 8s linear infinite;
+}
+
+/* Se dibuja */
+@keyframes draw{
+    to{
+        stroke-dashoffset:0;
+    }
+}
+
+/* Latido */
+@keyframes heartbeat{
+    0%,100%{ transform:scale(1); }
+    25%{ transform:scale(1.08); }
+    50%{ transform:scale(1); }
+    75%{ transform:scale(1.05); }
+}
+
+/* Reinicia animación cada 8s */
+@keyframes restart{
+    0%{}
+}
+
+/* TEXTO INFERIOR */
+.date-text{
+    font-family:'Alex Brush', cursive;
+    font-size:32px;
+    margin-top:30px;
+}
+
+/* RESPONSIVE */
+@media (max-width:600px){
+    .month{ font-size:28px; }
+    .calendar{ gap:8px; font-size:15px; }
+    .date-text{ font-size:24px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="month">MAYO</div>
+
+<div class="weekdays">
+<div>D</div><div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div>
+</div>
+
+<div class="line"></div>
+
+<div class="calendar">
+
+<div></div><div></div><div></div><div></div><div></div>
+<div class="day">1</div>
+<div class="day">2</div>
+
+<div class="day">3</div>
+<div class="day">4</div>
+<div class="day">5</div>
+<div class="day">6</div>
+<div class="day">7</div>
+<div class="day">8</div>
+<div class="day">9</div>
+
+<div class="day">10</div>
+<div class="day">11</div>
+<div class="day">12</div>
+<div class="day">13</div>
+<div class="day">14</div>
+<div class="day">15</div>
+<div class="day">16</div>
+
+<div class="day">17</div>
+<div class="day">18</div>
+<div class="day">19</div>
+<div class="day">20</div>
+<div class="day">21</div>
+<div class="day">22</div>
+
+<div class="day highlight">
+23
+<svg class="heart" viewBox="0 0 100 100">
+<path d="M50 80 
+C20 60, 10 40, 25 30 
+C35 22, 45 28, 50 35 
+C55 28, 65 22, 75 30 
+C90 40, 80 60, 50 80"/>
+</svg>
+</div>
+
+<div class="day">24</div>
+<div class="day">25</div>
+<div class="day">26</div>
+<div class="day">27</div>
+<div class="day">28</div>
+<div class="day">29</div>
+<div class="day">30</div>
+
+<div class="day">31</div>
+
+</div>
+
+<div class="date-text">
+Veintitrés de Mayo del<br>
+Veinte Veintiséis
+</div>
+
+</div>
+
+</body>
+</html>
