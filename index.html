@@ -7,194 +7,247 @@
 <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=DM+Serif+Display&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  background:transparent;
-  text-align:center;
-  font-family:'DM Serif Display', serif;
-  color:#7a8b6f;
+html, body{
+    margin:0;
+    padding:0;
+    background:transparent;
+    text-align:center;
+    font-family:'DM Serif Display', serif;
+    color:#7a8b6f;
 }
 
-/* ===== CALENDARIO ===== */
-.calendar-wrap{
-  max-width:420px;
-  margin:40px auto 20px;
-  background:#f6efe6;
-  padding:30px 20px;
-  border-radius:12px;
+/* CONTENEDOR GENERAL */
+.container{
+    padding:30px 15px;
 }
 
+/* MES */
 .month{
-  letter-spacing:4px;
-  margin-bottom:10px;
+    font-size:40px;
+    letter-spacing:4px;
+    margin-bottom:10px;
 }
 
-.days, .numbers{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-}
-
-.days{
-  font-size:14px;
-  margin-bottom:10px;
+/* DIAS SEMANA */
+.weekdays{
+    display:grid;
+    grid-template-columns: repeat(7,1fr);
+    font-size:18px;
+    margin-bottom:10px;
 }
 
 .line{
-  height:1px;
-  background:#c9a646;
-  margin:10px 0 15px;
+    height:2px;
+    background:#b59a2f;
+    margin:10px 0 20px 0;
 }
 
-.numbers{
-  gap:8px;
-  font-size:15px;
+/* CALENDARIO */
+.calendar{
+    display:grid;
+    grid-template-columns: repeat(7,1fr);
+    gap:12px;
+    font-size:18px;
 }
 
-.special{
-  position:relative;
-  font-weight:bold;
-  color:#c9a646;
+.day{
+    position:relative;
 }
 
-/* ❤️ CORAZÓN LATIENDO */
+.highlight{
+    position:relative;
+    font-weight:bold;
+}
+
+/* CORAZÓN */
 .heart{
-  position:absolute;
-  width:60px;
-  left:-10px;
-  top:-10px;
-  animation:latido 1.4s infinite;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) scale(1);
+    width:60px;
+    height:60px;
+    pointer-events:none;
 }
 
-@keyframes latido{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.15)}
+.heart path{
+    fill:none;
+    stroke:#b59a2f;
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:300;
+    stroke-dashoffset:300;
+    animation: draw 3s ease forwards,
+               heartbeat 1.2s ease-in-out 3s infinite;
 }
 
+@keyframes draw{
+    to{ stroke-dashoffset:0; }
+}
+
+@keyframes heartbeat{
+    0%,100%{ transform:scale(1); }
+    25%{ transform:scale(1.08); }
+    50%{ transform:scale(1); }
+    75%{ transform:scale(1.05); }
+}
+
+/* TEXTO FECHA */
 .date-text{
-  font-family:'Alex Brush', cursive;
-  font-size:26px;
-  margin-top:25px;
+    font-family:'Alex Brush', cursive;
+    font-size:32px;
+    margin-top:30px;
 }
 
-/* ===== CONTADOR ===== */
+/* SEPARADOR ENTRE BLOQUES */
+.separator{
+    height:1px;
+    background:rgba(181,154,47,0.25);
+    margin:50px auto 20px auto;
+    width:80%;
+}
+
+/* CONTADOR */
 .subtitle{
-  font-size:26px;
-  margin-top:40px;
+    font-size:24px;
+    color:#7a8b6f;
 }
 
 .title{
-  font-family:'Alex Brush', cursive;
-  font-size:48px;
-  margin-bottom:20px;
+    font-family:'Alex Brush', cursive;
+    font-size:48px;
+    color:#7a8b6f;
+    margin-bottom:30px;
 }
 
 .countdown{
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  flex-wrap:wrap;
-  margin-bottom:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:nowrap;
 }
 
-.box{
-  min-width:70px;
+.block{
+    min-width:70px;
 }
 
 .number{
-  font-size:48px;
-  color:#c9a646;
+    font-size:50px;
+    color:#b59a2f;
 }
 
 .label{
-  font-family:'Alex Brush', cursive;
-  font-size:22px;
+    font-family:'Alex Brush', cursive;
+    font-size:24px;
+    color:#7a8b6f;
 }
 
-/* 📱 MOBILE */
-@media(max-width:600px){
-  .title{font-size:36px}
-  .number{font-size:38px}
-  .label{font-size:18px}
+/* RESPONSIVE */
+@media (max-width:600px){
+    .month{ font-size:28px; }
+    .calendar{ gap:8px; font-size:15px; }
+    .date-text{ font-size:24px; }
+    .number{ font-size:34px; }
+    .label{ font-size:18px; }
+    .title{ font-size:36px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ===== CALENDARIO ARRIBA ===== -->
-<div class="calendar-wrap">
+<div class="container">
 
-  <h2 class="month">MAYO</h2>
+<!-- CALENDARIO -->
+<div class="month">MAYO</div>
 
-  <div class="days">
-    <div>D</div><div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div>
-  </div>
-
-  <div class="line"></div>
-
-  <div class="numbers">
-    <div></div><div></div><div></div><div></div><div></div><div>1</div><div>2</div>
-    <div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div>
-    <div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div>
-    <div>17</div><div>18</div><div>19</div><div>20</div><div>21</div><div>22</div>
-
-    <!-- DIA ESPECIAL -->
-    <div class="special">
-      23
-      <svg class="heart" viewBox="0 0 100 80">
-        <path d="M10,40 C10,15 40,15 50,35 C60,15 90,15 90,40 C90,60 50,75 50,75 C50,75 10,60 10,40Z"
-          fill="none"
-          stroke="#c9a646"
-          stroke-width="2"/>
-      </svg>
-    </div>
-
-    <div>24</div><div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div>
-    <div>31</div>
-  </div>
-
-  <div class="date-text">
-    Veintitrés de Mayo del<br>Veinte Veintiséis
-  </div>
-
+<div class="weekdays">
+<div>D</div><div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div>
 </div>
 
-<!-- ===== CONTADOR ABAJO ===== -->
+<div class="line"></div>
+
+<div class="calendar">
+<div></div><div></div><div></div><div></div><div></div>
+<div class="day">1</div>
+<div class="day">2</div>
+
+<div class="day">3</div><div class="day">4</div><div class="day">5</div>
+<div class="day">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div>
+
+<div class="day">10</div><div class="day">11</div><div class="day">12</div>
+<div class="day">13</div><div class="day">14</div><div class="day">15</div><div class="day">16</div>
+
+<div class="day">17</div><div class="day">18</div><div class="day">19</div>
+<div class="day">20</div><div class="day">21</div><div class="day">22</div>
+
+<div class="day highlight">
+23
+<svg class="heart" viewBox="0 0 100 100">
+<path d="M50 80 
+C20 60, 10 40, 25 30 
+C35 22, 45 28, 50 35 
+C55 28, 65 22, 75 30 
+C90 40, 80 60, 50 80"/>
+</svg>
+</div>
+
+<div class="day">24</div><div class="day">25</div><div class="day">26</div>
+<div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div>
+<div class="day">31</div>
+</div>
+
+<div class="date-text">
+Veintitrés de Mayo del<br>
+Dos Mil Veintiséis
+</div>
+
+<div class="separator"></div>
+
+<!-- CONTADOR -->
 <div class="subtitle">Contando los días</div>
 <div class="title">Para nuestro “Sí”</div>
 
 <div class="countdown">
-  <div class="box">
-    <div class="number" id="dias">0</div>
-    <div class="label">Días</div>
-  </div>
-  <div class="box">
-    <div class="number" id="horas">0</div>
-    <div class="label">Horas</div>
-  </div>
-  <div class="box">
-    <div class="number" id="minutos">0</div>
-    <div class="label">Minutos</div>
-  </div>
-  <div class="box">
-    <div class="number" id="segundos">0</div>
-    <div class="label">Segundos</div>
-  </div>
+    <div class="block">
+        <div id="days" class="number"></div>
+        <div class="label">Días</div>
+    </div>
+    <div class="block">
+        <div id="hours" class="number"></div>
+        <div class="label">Horas</div>
+    </div>
+    <div class="block">
+        <div id="minutes" class="number"></div>
+        <div class="label">Minutos</div>
+    </div>
+    <div class="block">
+        <div id="seconds" class="number"></div>
+        <div class="label">Segundos</div>
+    </div>
+</div>
+
 </div>
 
 <script>
-// FECHA BODA
-const boda = new Date("May 23, 2026 00:00:00").getTime();
+const targetDate = new Date("May 23, 2026 16:00:00").getTime();
 
-setInterval(()=>{
-  const ahora = new Date().getTime();
-  const diff = boda - ahora;
+setInterval(function() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
 
-  document.getElementById("dias").innerText = Math.floor(diff/(1000*60*60*24));
-  document.getElementById("horas").innerText = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  document.getElementById("minutos").innerText = Math.floor((diff%(1000*60*60))/(1000*60));
-  document.getElementById("segundos").innerText = Math.floor((diff%(1000*60))/1000);
-},1000);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+}, 1000);
 </script>
 
 </body>
