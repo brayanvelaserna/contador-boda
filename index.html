@@ -16,7 +16,6 @@ html, body{
     color:#7a8b6f;
 }
 
-/* CONTENEDOR GENERAL */
 .container{
     padding:30px 15px;
 }
@@ -54,9 +53,11 @@ html, body{
     position:relative;
 }
 
+/* ⭐ DIA 23 DORADO */
 .highlight{
     position:relative;
     font-weight:bold;
+    color:#b59a2f;
 }
 
 /* CORAZÓN */
@@ -93,14 +94,14 @@ html, body{
     75%{ transform:scale(1.05); }
 }
 
-/* TEXTO FECHA */
+/* ⭐ FECHA MÁS GRANDE */
 .date-text{
     font-family:'Alex Brush', cursive;
-    font-size:32px;
+    font-size:40px; /* antes 32 */
     margin-top:30px;
 }
 
-/* SEPARADOR ENTRE BLOQUES */
+/* SEPARADOR */
 .separator{
     height:1px;
     background:rgba(181,154,47,0.25);
@@ -110,14 +111,12 @@ html, body{
 
 /* CONTADOR */
 .subtitle{
-    font-size:24px;
-    color:#7a8b6f;
+    font-size:26px;
 }
 
 .title{
     font-family:'Alex Brush', cursive;
-    font-size:48px;
-    color:#7a8b6f;
+    font-size:52px;
     margin-bottom:30px;
 }
 
@@ -130,27 +129,28 @@ html, body{
 }
 
 .block{
-    min-width:70px;
+    min-width:80px;
 }
 
+/* ⭐ NÚMEROS MÁS GRANDES */
 .number{
-    font-size:50px;
+    font-size:64px;
     color:#b59a2f;
 }
 
+/* ⭐ TEXTO MÁS GRANDE */
 .label{
     font-family:'Alex Brush', cursive;
-    font-size:24px;
-    color:#7a8b6f;
+    font-size:28px;
 }
 
 /* RESPONSIVE */
 @media (max-width:600px){
     .month{ font-size:28px; }
     .calendar{ gap:8px; font-size:15px; }
-    .date-text{ font-size:24px; }
-    .number{ font-size:34px; }
-    .label{ font-size:18px; }
+    .date-text{ font-size:28px; }
+    .number{ font-size:40px; }
+    .label{ font-size:20px; }
     .title{ font-size:36px; }
 }
 </style>
